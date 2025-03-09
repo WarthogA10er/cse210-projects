@@ -8,18 +8,18 @@ class Program
         //choose random number
         Random randomGenerator = new Random();
         int magicNumber = randomGenerator.Next(1, 101);
-        int dalton = 0;
 
         //start game
         Console.WriteLine("I have picked a number between 1 and 100. Try to guess it:");
         string guess = Console.ReadLine();
 
         //set val to count times run
-        int times = 1;
+        int times = 0;
 
         //start loop
         while (true)
         {
+
         //loop to determine if guess = number
         while (true)
         {
@@ -27,51 +27,20 @@ class Program
         int i = 0; 
         bool result = int.TryParse(guess, out i);
 
-        //run if guess != number -- please ignore this. My roommate (Dalton) tries to break my code before I
-        //submit it and this extra bit was just because I wanted to break-proof it as well as call him names
-        //don't worry, he loved it.
+        //run if guess != number
         if (result == false)
         {
-            //set dalton to neutral to count times dalton was dalton instead of help
-            dalton += 1;
-            Console.WriteLine("Stop it Dalton.");
-            Thread.Sleep(1500);
-            if (dalton >=2)
-            {
-                Console.WriteLine("You suck.");
-                Thread.Sleep(1500);
-            }
+            Console.WriteLine("Sorry, that is not a valid guess.");
+            Console.WriteLine("Try again:");
+            guess = Console.ReadLine();
+            
+        }
 
-            if (dalton >=4)
-            {
-                Console.WriteLine("I hate you.");
-                Thread.Sleep(1500);
-            }
-
-            if (dalton >=6)
-            {
-                Console.WriteLine("Stop it Douche.");
-                Thread.Sleep(1500);
-            }
-
-            if (dalton >=9)
-            {
-                Console.WriteLine("This is why you're single.");
-                Thread.Sleep(5000);
-                Console.WriteLine("Sorry, that may have been too harsh");
-                Thread.Sleep(2000);
-                Console.WriteLine("Nevermind. You deserved it.");
-            }
-        }    
-        //break dalton loop if dalton = helpful
+        //break loop when guess = valid
         if (result == true)
         {
-            Console.WriteLine("Finally, you insufferable hag.");
             break;
         }
-        Console.WriteLine("Try again:");
-        guess = Console.ReadLine();
-        
         }
 
         //convert string guess to int guess
