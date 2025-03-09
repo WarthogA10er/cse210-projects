@@ -62,15 +62,16 @@ class Program
                 Thread.Sleep(2000);
                 Console.WriteLine("Nevermind. You deserved it.");
             }
-            //break dalton loop if dalton = helpful
-            if (result == true)
-            {
-                Console.WriteLine("Finally, you insufferable hag.");
-                break;
-            }
-            Console.WriteLine("Try again:");
-            guess = Console.ReadLine();
+        }    
+        //break dalton loop if dalton = helpful
+        if (result == true)
+        {
+            Console.WriteLine("Finally, you insufferable hag.");
+            break;
         }
+        Console.WriteLine("Try again:");
+        guess = Console.ReadLine();
+        
         }
 
         //convert string guess to int guess
