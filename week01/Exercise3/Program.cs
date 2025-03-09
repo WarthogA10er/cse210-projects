@@ -20,14 +20,19 @@ class Program
         //start loop
         while (true)
         {
-        //logic to determine if guess = number
+        //loop to determine if guess = number
         while (true)
         {
+        //logic for guess = number
         int i = 0; 
         bool result = int.TryParse(guess, out i);
 
+        //run if guess != number -- please ignore this. My roommate (Dalton) tries to break my code before I
+        //submit it and this extra bit was just because I wanted to break-proof it as well as call him names
+        //don't worry, he loved it.
         if (result == false)
         {
+            //set dalton to neutral to count times dalton was dalton instead of help
             dalton += 1;
             Console.WriteLine("Stop it Dalton.");
             Thread.Sleep(1500);
@@ -57,7 +62,7 @@ class Program
                 Thread.Sleep(2000);
                 Console.WriteLine("Nevermind. You deserved it.");
             }
-
+            //break dalton loop if dalton = helpful
             if (result == true)
             {
                 Console.WriteLine("Finally, you insufferable hag.");
@@ -68,15 +73,19 @@ class Program
         }
         }
 
+        //convert string guess to int guess
         int guessNumber = int.Parse(guess);
 
+        //set times to start value
         times += 1;
 
+        //break loop if guess right
         if (guessNumber == magicNumber)
         {
             break;
         }
 
+        //continue loop if guess wrong + give user hint
         if (guessNumber != magicNumber)
         {
             if (guessNumber > magicNumber)
@@ -95,6 +104,8 @@ class Program
 
         }
         }
+
+        //display congratulations + # of guesses
         Console.WriteLine("Good Job! You got it!");
         Console.WriteLine($"It took you {times} tries.");
         
