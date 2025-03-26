@@ -5,15 +5,18 @@ class Program
 {
     static void Main(string[] args)
     {
-        //store first name
-        Console.WriteLine("What is your first name?");
-        string first = Console.ReadLine();
+        List<string> fruits = new List<string>
+        {
+            "Apple", "Banana", "Cherry", "Dragonfruit", "Elderberry"
+        };
 
-        //store last name
-        Console.WriteLine("What is your last name?");
-        string last = Console.ReadLine();
+        // Random object
+        Random rnd = new Random();
 
-        //display name
-        Console.WriteLine($"Your name is {last}, {first} {last}.");
+        // Get random index
+        int index = rnd.Next(fruits.Count);
+
+        // Print random fruit
+        Console.WriteLine(fruits[index]);
     }
 }
