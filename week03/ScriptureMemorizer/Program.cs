@@ -44,12 +44,18 @@ class Program
             {
                 break;
             }
-            for(int i = 0; i < 3; i++)
+
+            if(scripture.CompareScripToHidden() != 0)
             {
-                if(remainder != 0)
-                {
-                scripture.HideRandomWord();
-                }
+            scripture.HideRandomWord();
+            }
+            if(scripture.CompareScripToHidden() != 0)
+            {
+            scripture.HideRandomWord();
+            }
+            if(scripture.CompareScripToHidden() != 0)
+            {
+            scripture.HideRandomWord();
             }
         }
         Console.WriteLine("Have a good day!");

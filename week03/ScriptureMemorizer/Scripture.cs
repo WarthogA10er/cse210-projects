@@ -18,7 +18,7 @@ public class Scripture
         _scriptures.Add("\n");
         foreach(string word in words)
         {
-            if(word != " ")
+            if(word != " " && word != "")
             {
                 _scriptures.Add(word);
             }
@@ -46,7 +46,7 @@ public class Scripture
             {
                 index = rnd.Next(_scriptures.Count);
                 word = _scriptures[index];
-                if(word.Contains("_") == false)
+                if(word.Contains("_") == false && word != "\n")
                 {
                     break;
                 }
@@ -69,7 +69,7 @@ public class Scripture
 
     public int CompareScripToHidden()
     {
-        int remainder = _scriptures.Count() - _hiddenWords.Count();
+        int remainder = (_scriptures.Count() - 1) - _hiddenWords.Count();
         return remainder;
     }
 }
