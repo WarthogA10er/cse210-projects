@@ -29,6 +29,8 @@ class Program
 
         while(true)
         {
+            Console.Clear();
+            
             scripture.DisplayScripture(reference);
             
             string enter;
