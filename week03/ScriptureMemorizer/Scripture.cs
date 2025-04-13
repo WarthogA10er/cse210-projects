@@ -3,24 +3,25 @@ using System.Runtime.CompilerServices;
 
 public class Scripture
 {
-    private List<string> _scriptures;
-    private List<string> _hiddenWords;
+    private List<Word> _scriptures;
+    private List<Word> _hiddenWords;
 
     public Scripture()
     {
-        _scriptures = new List<string>{};
-        _hiddenWords = new List<string>{};
+        _scriptures = new List<Word>{};
+        _hiddenWords = new List<Word>{};
     }
 
     public void AddVerse(string verse)
     {
         List<string> words = new List<string>(verse.Split(new char[] {' ',':',';','(',')','?','!','.',',','-'}));
-        _scriptures.Add("\n");
+        
         foreach(string word in words)
         {
             if(word != " " && word != "")
             {
-                _scriptures.Add(word);
+                Word newWord = new Word(word);
+                _scriptures.Add(newWord);
             }
         }
     }
@@ -30,9 +31,9 @@ public class Scripture
 
         //Console.Clear();
 
-        foreach(string word in _scriptures)
+        foreach(Word word in _scriptures)
         {
-            Console.Write($"{word} ");
+            word.Display();
         }
         Console.WriteLine("");
     }
@@ -40,36 +41,27 @@ public class Scripture
     public void HideRandomWord()
     {
         Random rnd = new Random();
-        string word = "";
+        Word word;
         int index = 0;
         while(true)
             {
                 index = rnd.Next(_scriptures.Count);
                 word = _scriptures[index];
-                if(word.Contains("_") == false && word != "\n")
+                if(word.ReturnIfHidden() == false)
                 {
                     break;
                 }
             }
+        word.HideWord();
         
         _hiddenWords.Add(word);
         
-        List<string> letters = new List<string>{};
 
-        for(int i=0; i < word.Length; i++)
-        {
-            letters.Add("_");
-        }
-
-        string hiddenWord = string.Join("", letters);
-
-        _scriptures.RemoveAt(index);
-        _scriptures.Insert(index, hiddenWord);
     }
 
     public int CompareScripToHidden()
     {
-        int remainder = (_scriptures.Count() - 1) - _hiddenWords.Count();
+        int remainder = _scriptures.Count() - _hiddenWords.Count();
         return remainder;
     }
 }
